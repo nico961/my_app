@@ -12,7 +12,7 @@ class HomeController < ApplicationController
     comment = @article.comments.new
     comment.comment = params[:comment]
     if comment.save
-      redirect_to read_path(article_id: @article.id, notice: 'Success')
+      redirect_to read_path(article_id: @article.id, notice: 'Succes')
     else
       redirect_to read_path(article_id: @article.id, notice: 'Error')
     end
@@ -23,6 +23,6 @@ class HomeController < ApplicationController
 
   def search
     keyword = params[:keyword]
-    @articles = Article.where("title LIKE '%#{keyword}%'")
+    @articles = Article.where("title LIKE '%#(keyword)%'")
   end
 end
